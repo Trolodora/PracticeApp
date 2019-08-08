@@ -11,7 +11,7 @@ import Foundation
 
 struct Image : Codable
 {
-    var status  : String
+    var status  : Int
     let data: [dataDictionary]
     
    

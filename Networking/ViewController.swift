@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -27,9 +27,9 @@ class ViewController: UIViewController {
         
         
         
-    
+        
         let task = defSession.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-         
+            
             guard error == nil else{
                 return
             }
@@ -38,20 +38,20 @@ class ViewController: UIViewController {
             }
             
             do{
-            
+                
                 let course = try? JSONDecoder().decode(Image.self, from: data)
                 print(course)
             }
-        
+            
         })
         
         task.resume()
- 
-        }
         
+    }
+    
 }
-    
-    
+
+
 
 
 
@@ -114,10 +114,10 @@ class ViewController: UIViewController {
 
 // Do any additional setup after loading the view.
 
-    
 
-    
-    
-    
+
+
+
+
 
 
