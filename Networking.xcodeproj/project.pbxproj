@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		661779F522FCA85800DABEC9 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661779F422FCA85800DABEC9 /* MyCell.swift */; };
 		6664C09622FB729E0033C9FA /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6664C09522FB729E0033C9FA /* Image.swift */; };
-		6664C09822FB73B80033C9FA /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6664C09722FB73B80033C9FA /* TrackTableViewCell.swift */; };
 		6695B30922FB49FF00B41B7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6695B30822FB49FF00B41B7D /* AppDelegate.swift */; };
 		6695B30B22FB49FF00B41B7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6695B30A22FB49FF00B41B7D /* ViewController.swift */; };
 		6695B30E22FB49FF00B41B7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6695B30C22FB49FF00B41B7D /* Main.storyboard */; };
@@ -18,8 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		661779F422FCA85800DABEC9 /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		6664C09522FB729E0033C9FA /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		6664C09722FB73B80033C9FA /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		6695B30522FB49FF00B41B7D /* Networking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Networking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6695B30822FB49FF00B41B7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6695B30A22FB49FF00B41B7D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,8 +74,8 @@
 				6664C09922FB73C60033C9FA /* source */,
 				6695B30822FB49FF00B41B7D /* AppDelegate.swift */,
 				6695B30A22FB49FF00B41B7D /* ViewController.swift */,
+				661779F422FCA85800DABEC9 /* MyCell.swift */,
 				6664C09522FB729E0033C9FA /* Image.swift */,
-				6664C09722FB73B80033C9FA /* TrackTableViewCell.swift */,
 				6695B31722FB4A0B00B41B7D /* Info.plist */,
 			);
 			path = Networking;
@@ -152,8 +152,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6664C09822FB73B80033C9FA /* TrackTableViewCell.swift in Sources */,
 				6695B30B22FB49FF00B41B7D /* ViewController.swift in Sources */,
+				661779F522FCA85800DABEC9 /* MyCell.swift in Sources */,
 				6695B31122FB49FF00B41B7D /* Networking.xcdatamodeld in Sources */,
 				6695B30922FB49FF00B41B7D /* AppDelegate.swift in Sources */,
 				6664C09622FB729E0033C9FA /* Image.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  TrackTableViewCell.swift
+//  MyCell.swift
 //  Networking
 //
 //  Created by RomaDUlbich on 8/8/19.
@@ -8,14 +8,11 @@
 
 import UIKit
 
-class TrackTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var trackNameOutl: UILabel!
-    
-    @IBOutlet weak var artistOutl: UILabel!
-    
-    
+class MyCell: UITableViewCell {
 
+    @IBOutlet weak var title: UILabel!
+    
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

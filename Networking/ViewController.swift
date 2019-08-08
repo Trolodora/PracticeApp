@@ -8,16 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var galleries = [Gallery]()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         
+        jsonQuery()
+       
+        
+    }
+    
+    func jsonQuery(){
         
         var defSession = URLSession.shared
         let urlReq = URL(string: "https://api.imgur.com/3/gallery/top/viral/1")!
@@ -39,15 +46,37 @@ class ViewController: UIViewController {
             
             do{
                 
-                let course = try? JSONDecoder().decode(Image.self, from: data)
-                print(course)
+                let parseResult = try? JSONDecoder().decode(Galleries.self, from: data)
+                self.galleries = parseResult!.data
+              
+              
+                print(parseResult)
+             
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
+           
             
         })
         
         task.resume()
-        
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return galleries.count
+    }
+   
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MyCell else{
+            fatalError()
+        }
+        
+       //configure cell
+        
+        return cell
+    }
+    
     
 }
 
@@ -55,64 +84,7 @@ class ViewController: UIViewController {
 
 
 
-/*
- func doThom (){
- 
- 
- 
- let defaultSession = URLSession.shared
- 
- let url1 = URL(string: "https://api.imgur.com/3/gallery/top/viral/1")!
- var request = URLRequest(url: url1)
- request.setValue("Client-ID 3974f835c77d0ef", forHTTPHeaderField: "Authorization")
- 
- let task = defaultSession.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
- 
- guard error == nil else {
- 
- return
- }
- 
- guard let data = data else {
- return
- }
- 
- var images = [Image]()
- 
- do {
- //create json object from data
- if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
- if let gallery = json["images"] as? [String: Any]{
- if let galleryData = gallery["data"] as? [[String: Any]]{
- for dataPoint in galleryData{
- if let galleryObject = try? Image(json: dataPoint){
- images.append(galleryObject)
- }
- }
- }
- 
- 
- }
- 
- 
- for value in images{
- print(images.count)
- }
- 
- print(json)
- }
- } catch let error {
- print(error.localizedDescription)
- }
- })
- task.resume()
- }
- */
 
-
-
-
-// Do any additional setup after loading the view.
 
 
 

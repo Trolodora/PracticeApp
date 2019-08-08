@@ -9,10 +9,10 @@
 import Foundation
 
 
-struct Image : Codable
+struct Galleries : Codable
 {
     var status  : Int
-    let data: [dataDictionary]
+    let data: [Gallery]
     
    
 
@@ -26,17 +26,38 @@ struct Image : Codable
     
    
 }
-struct dataDictionary : Codable{
-    
-    
+struct Gallery : Codable{
+  
     var title : String
+  //  let tags : [Tags]
+ // let images : [Img]
     enum CodingKeys: String, CodingKey {
         case title
+     //   case tags
+    // case images
+    }
+}
+
+struct Tags : Codable{
+    var name : String
+    enum CodingKeys: String, CodingKey {
+        case name
     }
 }
 
 
+ struct Img : Codable{
+    var description : String
+    enum CodingKeys: String, CodingKey {
+        case description
+    }
 
+    
+    
+}
+
+
+/*
 
     
    // eenum
@@ -108,4 +129,4 @@ struct dataDictionary : Codable{
         
     }
     */
-
+ */
