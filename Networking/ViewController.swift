@@ -8,21 +8,57 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    let textCellIdentifier = "TextID"
+    
     
     var galleries = [Gallery]()
     
+    
+    
+    
     override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
+        tableView.dataSource = self
+        tableView.delegate = self
+        super.viewDidLoad()       
         
         jsonQuery()
+        
        
+   
+    }
+    
+    //MARK - Tableview setup
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return galleries.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard  let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath) as? CustomCell else{
+            fatalError()
+        }
+  
+        
+        return cell
         
     }
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
     
     func jsonQuery(){
         
@@ -33,10 +69,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         
         
         
-        
-        
         let task = defSession.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-            
             guard error == nil else{
                 return
             }
@@ -48,36 +81,15 @@ class ViewController: UIViewController, UITableViewDataSource {
                 
                 let parseResult = try? JSONDecoder().decode(Galleries.self, from: data)
                 self.galleries = parseResult!.data
-              
-              
                 print(parseResult)
-             
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                print(self.galleries.count)
+                
             }
-           
-            
         })
         
         task.resume()
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return galleries.count
-    }
-   
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MyCell else{
-            fatalError()
-        }
-        
-       //configure cell
-        
-        return cell
-    }
-    
-    
+
 }
 
 
