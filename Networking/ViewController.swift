@@ -11,10 +11,12 @@ import UIKit
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    let textCellIdentifier = "TextID"
+
     
     
     var galleries = [Gallery]()
+    
+    
     
     
     
@@ -25,34 +27,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         super.viewDidLoad()       
         
         jsonQuery()
+      
         
        
    
     }
-    
-    //MARK - Tableview setup
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return galleries.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard  let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath) as? CustomCell else{
-            fatalError()
-        }
-  
-        
-        return cell
-        
-    }
-    
-    
-
-    
-    
     
     
     
@@ -83,14 +62,47 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 self.galleries = parseResult!.data
                 print(parseResult)
                 print(self.galleries.count)
+                print(self.galleries.last)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+           
                 
             }
         })
         
         task.resume()
     }
+    
+    
+    
+    
+    
+    //MARK - Tableview setup
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return galleries.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         let cell = tableView.dequeueReusableCell(withIdentifier: "Text", for: indexPath) as? CustomCell
+       
+    cell?.title.text = galleries[indexPath.row].title
+        
+        return cell!
+        
+    }
+    
+    
+    
+    
+    
 
 }
+
+
 
 
 
