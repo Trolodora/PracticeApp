@@ -10,6 +10,10 @@ import UIKit
 
 class CustomCell: UITableViewCell {
 
+  
+    @IBOutlet weak var imageDow: UIImageView!
+    
+    
     @IBOutlet weak var title: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

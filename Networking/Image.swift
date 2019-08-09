@@ -29,17 +29,17 @@ struct Galleries : Codable
 struct Gallery : Codable{
   
     var title : String
-  //  let tags : [Tags]
- // let images : [Img]
+   // let tags : [Tags]
+ let images : [Img]?
     enum CodingKeys: String, CodingKey {
         case title
-     //   case tags
-    // case images
+      
+   case images
     }
 }
 
 struct Tags : Codable{
-    var name : String
+    var name : String?
     enum CodingKeys: String, CodingKey {
         case name
     }
@@ -47,9 +47,9 @@ struct Tags : Codable{
 
 
  struct Img : Codable{
-    var description : String
+    var link : String
     enum CodingKeys: String, CodingKey {
-        case description
+        case link
     }
 
     

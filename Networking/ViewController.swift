@@ -56,18 +56,27 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 return
             }
             
-            do{
+            do{         
                 
-                let parseResult = try? JSONDecoder().decode(Galleries.self, from: data)
-                self.galleries = parseResult!.data
+                
+                let parseResult = try JSONDecoder().decode(Galleries.self, from: data)
+                
+             
+                self.galleries = parseResult.data
                 print(parseResult)
                 print(self.galleries.count)
                 print(self.galleries.last)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-           
+ 
                 
+            }
+            catch DecodingError.dataCorrupted(let context){
+                print(context)
+            }
+            catch {
+                print(error)
             }
         })
         
@@ -87,11 +96,24 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return galleries.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier: "Text", for: indexPath) as? CustomCell
-       
-    cell?.title.text = galleries[indexPath.row].title
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Text", for: indexPath) as? CustomCell else{
+            fatalError()
+        }
+    cell.title.text = galleries[indexPath.row].title
         
-        return cell!
+        if let urlstring = URL(string: galleries[indexPath.row].images?[0].link ?? ""){
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: urlstring)
+                if let data = data{
+                    let image = UIImage(data: data)
+                    DispatchQueue.main.async {
+                        cell.imageDow.image = image
+                    }
+                }
+            }
+        }
+        
+        return cell
         
     }
     
@@ -101,8 +123,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
 
 }
-
-
 
 
 
