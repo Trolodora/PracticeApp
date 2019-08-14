@@ -50,6 +50,7 @@ class MapViewController: UIViewController {
         let fenceRegion = regions(with: pin)
         locationManager.startMonitoring(for: fenceRegion)
     }
+    
     func stopMonitoring(){
         let regions = locationManager.monitoredRegions
         for region in regions{
@@ -139,11 +140,14 @@ extension MapViewController : CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        if region is CLCircularRegion {
-            let alert = UIAlertController(title: "You entered location", message: "You entered:\(region.title)", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                print("you entered\(region.identifier)")
+        let alert = UIAlertController(title: "You entered location", message: "You entered \(region.identifier)", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.presentedViewController(alert,animated:true,completion:nil)
+        //(alert, animated:true,completion: nil)
+        
         }
-    }
+    
     
 }
 
