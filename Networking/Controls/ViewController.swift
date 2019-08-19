@@ -8,29 +8,41 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     
     
     var galleries = [Gallery]()
     let client = NetworkClient()
-    let url = URL(string: "https://api.imgur.com/3/gallery/search/?q=cars")!
+    
     
     
     
     override func viewDidLoad() {
         tableView.dataSource = self
         tableView.delegate = self
+        searchBar.delegate = self
         super.viewDidLoad()
+        
+   
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let url = URL(string: "https://api.imgur.com/3/gallery/search/?q=\(searchBar.text!)")!
+        
+        searchBar.resignFirstResponder()
+        print("yes")
         client.fetchImages(url, completion: { (gallery) in
             self.galleries = gallery.data
             self.tableView.reloadData()
         })
-   
+        
     }
-    
     
     
     
@@ -98,7 +110,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Text", for: indexPath) as? CustomCell else{
             fatalError()
         }
-        /*
+        
     cell.title.text = galleries[indexPath.row].title
         
         if let urlstring = URL(string: galleries[indexPath.row].images?[0].link ?? ""){
@@ -112,7 +124,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 }
             }
         }
-        */
+        
         return cell
         
     }
