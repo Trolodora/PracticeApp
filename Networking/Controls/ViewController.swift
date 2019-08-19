@@ -20,14 +20,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     
-    
     override func viewDidLoad() {
         tableView.dataSource = self
         tableView.delegate = self
         super.viewDidLoad()
         client.fetchImages(url, completion: { (gallery) in
-            self.galleries = gallery
-            self.tableView.reloadData()            
+            self.galleries = gallery.data
+            self.tableView.reloadData()
         })
    
     }

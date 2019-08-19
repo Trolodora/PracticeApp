@@ -13,13 +13,13 @@ class NetworkClient {
     let headers: HTTPHeaders = ["Authorization":"Client-ID 3974f835c77d0ef"]  
     
     
-    func fetchImages(_ url: URL, completion:@escaping (_ galeries: [Gallery])->Void){
+    func fetchImages(_ url: URL, completion:@escaping (_ galeries: Galleries)->Void){
         AF.request(url,headers: headers).validate().responseJSON{
             response in
             print(response)
             guard let data = response.data else {return}
             do{
-                let myResponse = try JSONDecoder().decode([Gallery].self, from: data)
+                let myResponse = try JSONDecoder().decode(Galleries.self, from: data)
                 completion(myResponse)
                 print(myResponse)
                 
