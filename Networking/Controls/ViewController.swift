@@ -15,8 +15,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     var galleries = [Gallery]()
-    
-    
+    let client = NetworkClient()
+    let url = URL(string: "https://api.imgur.com/3/gallery/search/?q=cars")!
     
     
     
@@ -24,12 +24,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func viewDidLoad() {
         tableView.dataSource = self
         tableView.delegate = self
-        super.viewDidLoad()       
-        
-        jsonQuery()
-      
-        
-       
+        super.viewDidLoad()
+        client.fetchImages(url, completion: { (gallery) in
+            self.galleries = gallery
+            self.tableView.reloadData()            
+        })
    
     }
     
@@ -40,7 +39,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     func jsonQuery(){
-        
+        /*
         var defSession = URLSession.shared
         let urlReq = URL(string: "https://api.imgur.com/3/gallery/top/viral/1")!
         var request = URLRequest(url: urlReq)
@@ -81,6 +80,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         })
         
         task.resume()
+        */
     }
     
     
@@ -99,6 +99,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Text", for: indexPath) as? CustomCell else{
             fatalError()
         }
+        /*
     cell.title.text = galleries[indexPath.row].title
         
         if let urlstring = URL(string: galleries[indexPath.row].images?[0].link ?? ""){
@@ -112,7 +113,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 }
             }
         }
-        
+        */
         return cell
         
     }

@@ -143,7 +143,7 @@ extension MapViewController : CLLocationManagerDelegate{
                 print("you entered\(region.identifier)")
         let alert = UIAlertController(title: "You entered location", message: "You entered \(region.identifier)", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.presentedViewController(alert,animated:true,completion:nil)
+        self.present(alert,animated:true)
         //(alert, animated:true,completion: nil)
         
         }
