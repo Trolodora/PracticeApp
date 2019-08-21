@@ -48,7 +48,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     func jsonQuery(){
-        /*
+       
          var defSession = URLSession.shared
          let urlReq = URL(string: "https://api.imgur.com/3/gallery/top/viral/1")!
          var request = URLRequest(url: urlReq)
@@ -89,7 +89,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
          })
          
          task.resume()
-         */
+ 
     }
     
     
@@ -126,9 +126,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return cell
         
     }
-    
-    
-    
     
     
     

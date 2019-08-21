@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 struct Galleries : Codable
 {
     let data: [Gallery]
