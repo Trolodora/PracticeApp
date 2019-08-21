@@ -10,15 +10,15 @@ import UIKit
 import MapKit
 import CoreLocation
 
+
 struct PreferencesKeys {
     static let savedItems = "savedItems"
 }
 
 class MapViewController: UIViewController {
-//MARK - Properties
+    //MARK - Properties
     
     var pins = [UserPin]()
-    
     @IBOutlet weak var locationName: UITextField!
     
     let locationManager = CLLocationManager()
@@ -28,9 +28,7 @@ class MapViewController: UIViewController {
             mapView.mapType = .standard
         }
     }
-    
-//MARK - Funcs
-
+    //MARK - Funcs
     @IBAction func removePins(_ sender: Any) {
         for pin in pins{
             mapView.removeAnnotation(pin)
@@ -39,7 +37,7 @@ class MapViewController: UIViewController {
         stopMonitoring()
         saveAllPins()
     }
-//MARK - REGIONS
+    //MARK - REGIONS
     func regions(with pin: UserPin) -> CLCircularRegion{
         let region = CLCircularRegion(center: pin.coordinate, radius: pin.radius, identifier: pin.title!)
         return region
@@ -54,29 +52,25 @@ class MapViewController: UIViewController {
     func stopMonitoring(){
         let regions = locationManager.monitoredRegions
         for region in regions{
-           
+            
             locationManager.stopMonitoring(for: region)
         }
         
     }
     
     func add(_ pin:UserPin){
-    pins.append(pin)
-    mapView.addAnnotation(pin)
-    locationName.text! = ""
-    monitoreRegion(pin: pin)
-    saveAllPins()
+        pins.append(pin)
+        mapView.addAnnotation(pin)
+        locationName.text! = ""
+        monitoreRegion(pin: pin)
+        saveAllPins()
     }
-    
-    
-
     
     func loadAllPins() {
         pins.removeAll()
         let allpins = UserPin.allPins()
         allpins.forEach { add($0) }
     }
-    
     func saveAllPins(){
         let encoder = JSONEncoder()
         do {
@@ -87,44 +81,31 @@ class MapViewController: UIViewController {
         }
     }
     
-    
-   
-        override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
-     
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         loadAllPins()
-        }
-    
-//MARK - Adding pin to map
-    
+    }
+    //MARK - Adding pin to map
     @IBAction func addPin(_ sender: UITapGestureRecognizer) {
         if locationName.text != ""{
-        let location = sender.location(in: self.mapView)
-        let coordinate = self.mapView.convert(location, toCoordinateFrom: self.mapView)
-        let radius = 10000.0
-        let title = locationName.text!
-        let pin = UserPin(coordinate: coordinate,  title: title, radius: radius)
-        add(pin)
+            let location = sender.location(in: self.mapView)
+            let coordinate = self.mapView.convert(location, toCoordinateFrom: self.mapView)
+            let radius = 10000.0
+            let title = locationName.text!
+            let pin = UserPin(coordinate: coordinate,  title: title, radius: radius)
+            add(pin)
             
         }
         else{
             print("nope")
         }
-        
-        /*
-        
-         let geoFence = CLCircularRegion(center: anotation.coordinate, radius: 1000, identifier: anotation.title!)
-        locationManager.startMonitoring(for: geoFence)
-        locationName.text! = ""
-        */
     }
-
+    
 }
-
 //MARK - Delegation
 extension MapViewController : CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -140,14 +121,11 @@ extension MapViewController : CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-                print("you entered\(region.identifier)")
+        print("you entered\(region.identifier)")
         let alert = UIAlertController(title: "You entered location", message: "You entered \(region.identifier)", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert,animated:true)
-        //(alert, animated:true,completion: nil)
-        
-        }
-    
+    }
     
 }
 

@@ -12,13 +12,13 @@ import MapKit
 
 
 class UserPin: NSObject, MKAnnotation, Codable{
-   
+    
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var radius: CLLocationDistance
     
     enum CodingKeys: String, CodingKey{
-       case latitude, longitude, title, radius
+        case latitude, longitude, title, radius
     }
     
     func encode(to encoder: Encoder) throws {
@@ -27,7 +27,6 @@ class UserPin: NSObject, MKAnnotation, Codable{
         try container.encode(coordinate.longitude, forKey: .longitude)
         try container.encode(radius, forKey: .radius)
         try container.encode(title, forKey: .title)
-    
     }
     
     required init(from decoder: Decoder) throws {
@@ -38,23 +37,13 @@ class UserPin: NSObject, MKAnnotation, Codable{
         radius = try values.decode(Double.self, forKey: .radius)
         title = try values.decode(String.self, forKey: .title)
     }
-    
-    
-    
 
-    
     init(coordinate:CLLocationCoordinate2D  ,title: String, radius:CLLocationDistance) {
         self.coordinate = coordinate
- 
         self.title = title
         self.radius = radius
     }
-    
-    
-
-    
 }
-
 extension UserPin {
     public class func allPins() -> [UserPin] {
         guard let savedData = UserDefaults.standard.data(forKey: PreferencesKeys.savedItems) else { return [] }

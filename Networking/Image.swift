@@ -7,15 +7,12 @@
 //
 
 import Foundation
-
-
 struct Galleries : Codable
 {
     let data: [Gallery]
     enum CodingKeys: String, CodingKey{
         case data
-    }
-  
+    }    
 }
 
 struct Gallery : Codable{
@@ -27,7 +24,7 @@ struct Gallery : Codable{
     }
 }
 
- struct Img : Codable{
+struct Img : Codable{
     var link : String
     enum CodingKeys: String, CodingKey {
         case link
