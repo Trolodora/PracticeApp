@@ -12,6 +12,8 @@
 		66291A6C230EA5480016A797 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66291A6B230EA5480016A797 /* LoginViewController.swift */; };
 		6638321D230A8E7600799548 /* NetClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638321C230A8E7600799548 /* NetClient.swift */; };
 		6664C09622FB729E0033C9FA /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6664C09522FB729E0033C9FA /* Image.swift */; };
+		66762CF1230F171D002CA031 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66762CF0230F171D002CA031 /* KeychainPasswordItem.swift */; };
+		66762CF3230F3726002CA031 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66762CF2230F3726002CA031 /* RoundButton.swift */; };
 		667C07B023001D2A00FDE082 /* UserPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667C07AF23001D2A00FDE082 /* UserPin.swift */; };
 		668F1923230BEE52006CA58D /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F1922230BEE52006CA58D /* AddImageViewController.swift */; };
 		6695B30922FB49FF00B41B7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6695B30822FB49FF00B41B7D /* AppDelegate.swift */; };
@@ -29,6 +31,8 @@
 		66291A6B230EA5480016A797 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6638321C230A8E7600799548 /* NetClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetClient.swift; sourceTree = "<group>"; };
 		6664C09522FB729E0033C9FA /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		66762CF0230F171D002CA031 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		66762CF2230F3726002CA031 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoundButton.swift; path = ../source/RoundButton.swift; sourceTree = "<group>"; };
 		667C07AF23001D2A00FDE082 /* UserPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPin.swift; sourceTree = "<group>"; };
 		668F1922230BEE52006CA58D /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		6695B30522FB49FF00B41B7D /* Networking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Networking.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +85,7 @@
 				6601105222FF50520060A6A6 /* MapViewController.swift */,
 				668F1922230BEE52006CA58D /* AddImageViewController.swift */,
 				66291A6B230EA5480016A797 /* LoginViewController.swift */,
+				66762CF2230F3726002CA031 /* RoundButton.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 				66383219230A8DAB00799548 /* Controls */,
 				6664C09922FB73C60033C9FA /* source */,
 				667C07AF23001D2A00FDE082 /* UserPin.swift */,
+				66762CF0230F171D002CA031 /* KeychainPasswordItem.swift */,
 				6664C09522FB729E0033C9FA /* Image.swift */,
 				6638321C230A8E7600799548 /* NetClient.swift */,
 				6695B31722FB4A0B00B41B7D /* Info.plist */,
@@ -243,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66762CF3230F3726002CA031 /* RoundButton.swift in Sources */,
 				6638321D230A8E7600799548 /* NetClient.swift in Sources */,
 				6695B30B22FB49FF00B41B7D /* ViewController.swift in Sources */,
 				668F1923230BEE52006CA58D /* AddImageViewController.swift in Sources */,
@@ -253,6 +260,7 @@
 				6695B30922FB49FF00B41B7D /* AppDelegate.swift in Sources */,
 				66291A6C230EA5480016A797 /* LoginViewController.swift in Sources */,
 				6664C09622FB729E0033C9FA /* Image.swift in Sources */,
+				66762CF1230F171D002CA031 /* KeychainPasswordItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
