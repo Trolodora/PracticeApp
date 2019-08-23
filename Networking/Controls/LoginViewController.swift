@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 struct KeychainConfiguration {
     static let serviceName = "Networking"
     static let accessGroup: String? = nil
@@ -15,12 +16,15 @@ struct KeychainConfiguration {
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var touchIDButtn: UIButton!
     var passwordItems: [KeychainPasswordItem] = []
     @IBOutlet weak var usserPass: UITextField!
     let createLoginButtonTag = 0
     let loginButtonTag = 1
     @IBOutlet weak var loginButton: UIButton!
+     var isTyping = false
     
+    let touchIDstate = Biometrical()
     override func viewDidLoad() {
         super.viewDidLoad()
         let hasLogin = UserDefaults.standard.bool(forKey: "hasLoginKey")
@@ -32,6 +36,9 @@ class LoginViewController: UIViewController {
             loginButton.setTitle("Create", for: .normal)
             loginButton.tag = createLoginButtonTag
         }
+        
+        touchIDButtn.isHidden = !touchIDstate.canEvaluatePolicy()
+        
     }
     
     private func showLoginFailedAlert() {
@@ -85,7 +92,25 @@ class LoginViewController: UIViewController {
     }
     
     
+    @IBAction func touchDigit(_ sender: UIButton) {
+       
+        let currentPin = usserPass.text
+        let pinDigit = sender.currentTitle!
+        if isTyping{
+            usserPass.text = currentPin! + pinDigit
+        }
+        else{
+            usserPass.text = pinDigit
+        }
+        isTyping = true
+    }
     
+    @IBAction func touchIDAction(_ sender: Any) {
+        
+    }
     
+    @IBAction func clearPin(_ sender: Any) {
+        usserPass.text = ""
+    }
     
 }

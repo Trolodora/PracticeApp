@@ -128,7 +128,3 @@ extension MapViewController : CLLocationManagerDelegate{
     }
     
 }
-
-
-
-
