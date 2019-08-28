@@ -15,6 +15,7 @@ struct KeychainConfiguration {
 }
 
 class LoginViewController: UIViewController {
+    static let NotificationLogin = NSNotification.Name(rawValue: "Done")
     
     @IBOutlet weak var touchIDButtn: UIButton!
     var passwordItems: [KeychainPasswordItem] = []
@@ -80,10 +81,10 @@ class LoginViewController: UIViewController {
             }
             UserDefaults.standard.set(true, forKey: "hasLoginKey")
             loginButton.tag = loginButtonTag
-            performSegue(withIdentifier: "show", sender: self)
+          //  NotificationCenter.default.post(name: LoginViewController.NotificationLogin, object: nil)
         } else if sender.tag == loginButtonTag {
             if checkLogin(password: newPassword) {
-                performSegue(withIdentifier: "show", sender: self)
+                 NotificationCenter.default.post(name: LoginViewController.NotificationLogin, object: nil)
             } else {
                 showLoginFailedAlert()
             }
@@ -107,6 +108,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func touchIDAction(_ sender: Any) {
         
+    
     }
     
     @IBAction func clearPin(_ sender: Any) {

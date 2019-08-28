@@ -16,8 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        NotificationCenter.default.addObserver(self, selector:  #selector(done(notification:)), name: LoginViewController.NotificationLogin, object: nil)
         // Override point for customization after application launch.
         return true
+    }
+    
+    @objc func done(notification: Notification){
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: type(of: self)))
+        self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "ViewController")
+        /*
+        guard let viewController = storyboard.instantiateInitialViewController() else {return}
+        let presentedViewController = self.window?.rootViewController?.presentedViewController
+        presentedViewController?.present(viewController,animated: true){
+            self.window?.rootViewController?.dismiss(animated: false){
+                self.window?.rootViewController = UIViewController(nibName: "ViewController", bundle: Bundle(for: type(of: self)))
+            }
+        }
+ */
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

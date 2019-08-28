@@ -13,7 +13,7 @@
         <!--Imgur API-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Networking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Networking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="580" y="-55"/>
+            <point key="canvasLocation" x="25" y="58"/>
         </scene>
         <!--Add new image-->
         <scene sceneID="4ho-5b-bQV">
@@ -186,6 +186,7 @@
         <!--Navigation Controller-->
         <scene sceneID="edY-93-Sq0">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ait-JV-13S" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5ZX-8l-7V0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FcL-3e-vYm">
@@ -197,9 +198,8 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Grm-6O-33e"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ait-JV-13S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-353" y="378"/>
+            <point key="canvasLocation" x="-1250" y="-9"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="n3S-6y-nBo">
@@ -220,7 +220,7 @@
                                 <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" alpha="0.25" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t2o-N5-WBU">
+                            <textField opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t2o-N5-WBU">
                                 <rect key="frame" x="111" y="143" width="116" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -498,12 +498,11 @@
                         <outlet property="loginButton" destination="WYK-Ag-AtT" id="o2P-Ok-Ym9"/>
                         <outlet property="touchIDButtn" destination="OuX-9G-bIh" id="3ZU-Aw-BbE"/>
                         <outlet property="usserPass" destination="t2o-N5-WBU" id="cHj-EW-GXT"/>
-                        <segue destination="5ZX-8l-7V0" kind="show" identifier="show" id="5uQ-0T-ER2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GL9-Xg-Pnr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-242.40000000000001" y="-408.84557721139436"/>
+            <point key="canvasLocation" x="-399" y="-667"/>
         </scene>
     </scenes>
     <resources>
