@@ -24,15 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @objc func done(notification: Notification){
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: type(of: self)))
         self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "ViewController")
-        /*
-        guard let viewController = storyboard.instantiateInitialViewController() else {return}
-        let presentedViewController = self.window?.rootViewController?.presentedViewController
-        presentedViewController?.present(viewController,animated: true){
-            self.window?.rootViewController?.dismiss(animated: false){
-                self.window?.rootViewController = UIViewController(nibName: "ViewController", bundle: Bundle(for: type(of: self)))
-            }
-        }
- */
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

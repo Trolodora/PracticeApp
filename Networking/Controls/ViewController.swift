@@ -26,13 +26,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         tableView.delegate = self
         searchBar.delegate = self
         super.viewDidLoad()
+        
 
     }
     
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let url = URL(string: "https://api.imgur.com/3/gallery/search/?q=\(searchBar.text!)")!
-        
+        //
         searchBar.resignFirstResponder()
         print("yes")
         client.fetchImages(url, completion: { (gallery) in
@@ -42,59 +43,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
     }
     
-    
-    
-    
-    
-    
-    func jsonQuery(){
-       
-         var defSession = URLSession.shared
-         let urlReq = URL(string: "https://api.imgur.com/3/gallery/top/viral/1")!
-         var request = URLRequest(url: urlReq)
-         request.setValue("Client-ID 3974f835c77d0ef", forHTTPHeaderField: "Authorization")
-         
-         
-         
-         let task = defSession.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-         guard error == nil else{
-         return
-         }
-         guard let data = data else{
-         return
-         }
-         
-         do{
-         
-         
-         let parseResult = try JSONDecoder().decode(Galleries.self, from: data)
-         
-         
-         self.galleries = parseResult.data
-         print(parseResult)
-         print(self.galleries.count)
-         print(self.galleries.last)
-         DispatchQueue.main.async {
-         self.tableView.reloadData()
-         }
-         
-         
-         }
-         catch DecodingError.dataCorrupted(let context){
-         print(context)
-         }
-         catch {
-         print(error)
-         }
-         })
-         
-         task.resume()
- 
-    }
-    
-    
-    
-    
+
     
     //MARK - Tableview setup
     func numberOfSections(in tableView: UITableView) -> Int {
