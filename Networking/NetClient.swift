@@ -12,6 +12,8 @@ import Alamofire
 
 class NetworkClient {
     let headers: HTTPHeaders = ["Authorization":"Client-ID 8375cb219ab1c35"]
+    let authUrl = URL(string: "https://api.imgur.com/oauth2/authorize?client_id=8375cb219ab1c35&response_type=token")
+    let redirectUrl = URL(string: "com.networkApp://main")!
     func fetchImages(_ url: URL, completion:@escaping (_ galeries: Galleries)->Void){
         AF.request(url,headers: headers).validate().responseJSON{
             response in
@@ -26,6 +28,14 @@ class NetworkClient {
             }
         }
     }
+    
+    func toAuth(){
+        guard let url = authUrl else { return }
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        let redirectQuery = URLQueryItem(name: "redirect_url", value: redirectUrl.absoluteString)
+        UIApplication.shared.open(components!.url!,options: [:], completionHandler: nil)
+    }
+    
     
     func uploadImage(){
          let image = UIImage(named: "duck")!

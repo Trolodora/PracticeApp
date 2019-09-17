@@ -19,7 +19,8 @@ class AddImageViewController: UIViewController {
     }
     
     @IBAction func addButton(_ sender: Any) {
-    client.uploadImage()
+    //client.uploadImage()
+        client.toAuth()
     }
     
     /*

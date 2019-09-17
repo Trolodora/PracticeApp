@@ -20,10 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
-    
+
     @objc func done(notification: Notification){
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: type(of: self)))
         self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "ViewController")
+    }
+    
+    func application(_ app: UIApplication, open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+    return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
